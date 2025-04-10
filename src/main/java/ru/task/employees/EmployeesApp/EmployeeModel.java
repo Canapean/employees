@@ -1,5 +1,6 @@
 package ru.task.employees.EmployeesApp;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class EmployeeModel {
     private String lastName;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<CatModel> cats = new ArrayList<>();
 }

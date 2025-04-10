@@ -1,5 +1,6 @@
 package ru.task.employees.CatsApp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +26,6 @@ public class CatModel {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
+    @JsonBackReference
     private EmployeeModel employee;
 }
