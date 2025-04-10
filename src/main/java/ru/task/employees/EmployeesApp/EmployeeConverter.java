@@ -4,21 +4,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeConverter {
-    public EmployeeDto toDto(EmployeeModel entity) {
+    public EmployeeDto toDto(EmployeeModel model) {
         EmployeeDto dto = new EmployeeDto();
-        dto.setId(entity.getId());
-        dto.setFirstName(entity.getFirstName());
-        dto.setLastName(entity.getLastName());
-        dto.setCats(entity.getCats());
+        dto.setId(model.getId());
+        dto.setFirstName(model.getFirstName());
+        dto.setLastName(model.getLastName());
+        dto.setCats(model.getCats());
         return dto;
     }
 
-    public EmployeeModel toEntity(EmployeeDto dto) {
-        EmployeeModel entity = new EmployeeModel();
-        entity.setId(dto.getId());
-        entity.setFirstName(dto.getFirstName());
-        entity.setLastName(dto.getLastName());
-        entity.setCats(dto.getCats());
-        return entity;
+    public EmployeeModel toModel(EmployeeDto dto) {
+        EmployeeModel model = new EmployeeModel();
+        model.setId(dto.getId());
+        model.setFirstName(dto.getFirstName());
+        model.setLastName(dto.getLastName());
+        model.setCats(dto.getCats());
+        return model;
     }
 }
