@@ -2,6 +2,8 @@ package ru.task.employees.CatsApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.task.employees.CatsApp.CatService;
+import ru.task.employees.CatsApp.CatsConverter;
+import ru.task.employees.CatsApp.CatRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,11 @@ public class CatServicempl implements CatService{
 
     @Autowired
     private CatRepo catRepo;
-    private CatsConverter catsConverter;
+    private final CatsConverter catsConverter;
+
+    public CatServicempl(CatsConverter catsConverter){
+        this.catsConverter = catsConverter;
+    }
 
     @Override
     public List<CatsDto> getAllCats(){
@@ -43,7 +49,6 @@ public class CatServicempl implements CatService{
 
         cat.setName(newCat.getName());
         cat.setColor(newCat.getColor());
-        cat.setEmployee(newCat.getEmployee());
 
         CatModel updatedCat = catRepo.save(cat);
         return catsConverter.toDto(updatedCat);

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.task.employees.CatsApp.CatModel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -25,6 +27,6 @@ public class EmployeeModel {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "employee")
-    private Set<CatModel> cats;
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    private List<CatModel> cats = new ArrayList<>();
 }

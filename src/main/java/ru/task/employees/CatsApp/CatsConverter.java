@@ -11,7 +11,6 @@ public class CatsConverter {
         dto.setId(model.getId());
         dto.setName(model.getName());
         dto.setColor(model.getColor());
-        dto.setEmployee(model.getEmployee());
         return dto;
     }
 
@@ -20,7 +19,6 @@ public class CatsConverter {
         model.setId(dto.getId());
         model.setName(dto.getName());
         model.setColor(dto.getColor());
-        model.setEmployee(dto.getEmployee());
         return model;
     }
 }

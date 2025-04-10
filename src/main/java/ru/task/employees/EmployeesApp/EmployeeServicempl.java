@@ -11,7 +11,11 @@ public class EmployeeServicempl implements EmployeeService{
 
     @Autowired
     private EmployeeRepo employeeRepo;
-    private EmployeeConverter employeeConverter;
+    private final EmployeeConverter employeeConverter;
+
+    public EmployeeServicempl(EmployeeConverter employeeConverter) {
+        this.employeeConverter = employeeConverter;
+    }
 
     @Override
     public List<EmployeeDto> getAllEmployees(){
@@ -24,8 +28,8 @@ public class EmployeeServicempl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDto createEmployee(EmployeeDto employee){
-        EmployeeModel model = employeeConverter.toModel(employee);
+    public EmployeeDto createEmployee(EmployeeDto dto){
+        EmployeeModel model = employeeConverter.toModel(dto);
         EmployeeModel savedModel = employeeRepo.save(model);
         return employeeConverter.toDto(savedModel);
     }
@@ -40,8 +44,8 @@ public class EmployeeServicempl implements EmployeeService{
     public EmployeeDto updateEmployeeById(Long id, EmployeeDto data){
         EmployeeModel employee = employeeRepo.getById(id);
 
-        employee.setFirstName(data.getFirstName());
-        employee.setLastName(data.getLastName());
+        employee.setFirstName(data.getFirst_name());
+        employee.setLastName(data.getLast_name());
         employee.setCats(data.getCats());
 
         EmployeeModel updatedEmployee = employeeRepo.save(employee);
