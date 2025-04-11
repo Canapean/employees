@@ -1,0 +1,32 @@
+
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/employees
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - app-net
+
+  postgres:
+    image: postgres:17
+    container_name: pg_container
+    restart: always
+    environment:
+      POSTGRES_DB: employees
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"
+    networks:
+      - app-net
+
+networks:
+  app-net:

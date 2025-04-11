@@ -7,7 +7,6 @@ import ru.task.employees.adapter.EmployeesApp.EmployeeModel;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
 @Table(name = "cats")
 public class CatModel {
