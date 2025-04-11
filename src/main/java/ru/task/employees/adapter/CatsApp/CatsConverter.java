@@ -6,18 +6,18 @@ import ru.task.employees.domain.CatsEntity;
 @Component
 public class CatsConverter {
     public CatsEntity toDto(CatModel model) {
-        CatsEntity dto = new CatsEntity();
-        dto.setId(model.getId());
-        dto.setName(model.getName());
-        dto.setColor(model.getColor());
-        return dto;
+        CatsEntity entity = new CatsEntity();
+        entity.setId(model.getId());
+        entity.setName(model.getName());
+        entity.setColor(model.getColor());
+        return entity;
     }
 
-    public CatModel toModel(CatsEntity dto) {
+    public CatModel toModel(CatsEntity entity) {
         CatModel model = new CatModel();
-        model.setId(dto.getId());
-        model.setName(dto.getName());
-        model.setColor(dto.getColor());
+        model.setId(entity.getId());
+        model.setName(entity.getName());
+        model.setColor(entity.getColor());
         return model;
     }
 }

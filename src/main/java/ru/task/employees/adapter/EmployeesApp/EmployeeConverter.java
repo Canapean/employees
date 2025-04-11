@@ -6,20 +6,20 @@ import ru.task.employees.domain.EmployeeEntity;
 @Component
 public class EmployeeConverter {
     public EmployeeEntity toDto(EmployeeModel model) {
-        EmployeeEntity dto = new EmployeeEntity();
-        dto.setId(model.getId());
-        dto.setFirst_name(model.getFirstName());
-        dto.setLast_name(model.getLastName());
-        dto.setCats(model.getCats());
-        return dto;
+        EmployeeEntity entity = new EmployeeEntity();
+        entity.setId(model.getId());
+        entity.setFirst_name(model.getFirstName());
+        entity.setLast_name(model.getLastName());
+        entity.setCats(model.getCats());
+        return entity;
     }
 
-    public EmployeeModel toModel(EmployeeEntity dto) {
+    public EmployeeModel toModel(EmployeeEntity entity) {
         EmployeeModel model = new EmployeeModel();
-        model.setId(dto.getId());
-        model.setFirstName(dto.getFirst_name());
-        model.setLastName(dto.getLast_name());
-        model.setCats(dto.getCats());
+        model.setId(entity.getId());
+        model.setFirstName(entity.getFirst_name());
+        model.setLastName(entity.getLast_name());
+        model.setCats(entity.getCats());
         return model;
     }
 }
