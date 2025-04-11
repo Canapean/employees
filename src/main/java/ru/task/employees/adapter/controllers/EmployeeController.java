@@ -1,10 +1,11 @@
-package ru.task.employees.EmployeesApp;
+package ru.task.employees.adapter.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.task.employees.EmployeesApp.EmployeeServicempl;
+import ru.task.employees.domain.EmployeeEntity;
+import ru.task.employees.domain.services.EmployeeServicempl;
 
 import java.util.List;
 
@@ -16,25 +17,25 @@ public class EmployeeController {
     private EmployeeServicempl employeeServicempl;
 
     @GetMapping
-    public List<EmployeeDto> getAllEmployees(){
+    public List<EmployeeEntity> getAllEmployees(){
         return employeeServicempl.getAllEmployees();
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employee){
-        EmployeeDto createdEmployee = employeeServicempl.createEmployee(employee);
+    public ResponseEntity<EmployeeEntity> createEmployee(@RequestBody EmployeeEntity employee){
+        EmployeeEntity createdEmployee = employeeServicempl.createEmployee(employee);
         return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id){
-        EmployeeDto employee = employeeServicempl.getEmployeeById(id);
+    public ResponseEntity<EmployeeEntity> getEmployeeById(@PathVariable Long id){
+        EmployeeEntity employee = employeeServicempl.getEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public  ResponseEntity<EmployeeDto> updateEmployeeById(@PathVariable Long id, @RequestBody EmployeeDto data){
-        EmployeeDto updatedEmployee = employeeServicempl.updateEmployeeById(id, data);
+    public  ResponseEntity<EmployeeEntity> updateEmployeeById(@PathVariable Long id, @RequestBody EmployeeEntity data){
+        EmployeeEntity updatedEmployee = employeeServicempl.updateEmployeeById(id, data);
         return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
     }
 

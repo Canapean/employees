@@ -1,20 +1,19 @@
-package ru.task.employees.CatsApp;
+package ru.task.employees.adapter.CatsApp;
 
 import org.springframework.stereotype.Component;
-import ru.task.employees.EmployeesApp.EmployeeDto;
-import ru.task.employees.EmployeesApp.EmployeeModel;
+import ru.task.employees.domain.CatsEntity;
 
 @Component
 public class CatsConverter {
-    public CatsDto toDto(CatModel model) {
-        CatsDto dto = new CatsDto();
+    public CatsEntity toDto(CatModel model) {
+        CatsEntity dto = new CatsEntity();
         dto.setId(model.getId());
         dto.setName(model.getName());
         dto.setColor(model.getColor());
         return dto;
     }
 
-    public CatModel toModel(CatsDto dto) {
+    public CatModel toModel(CatsEntity dto) {
         CatModel model = new CatModel();
         model.setId(dto.getId());
         model.setName(dto.getName());

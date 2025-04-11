@@ -1,17 +1,16 @@
-package ru.task.employees.EmployeesApp;
+package ru.task.employees.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.task.employees.CatsApp.CatModel;
+import ru.task.employees.adapter.CatsApp.CatModel;
 
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class EmployeeDto {
+public class EmployeeEntity {
     private Long id;
     private String first_name;
     private String last_name;

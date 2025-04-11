@@ -1,15 +1,14 @@
-package ru.task.employees.EmployeesApp;
+package ru.task.employees.adapter.EmployeesApp;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.task.employees.CatsApp.CatModel;
+import ru.task.employees.adapter.CatsApp.CatModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor

@@ -1,11 +1,9 @@
-package ru.task.employees.CatsApp;
+package ru.task.employees.adapter.CatsApp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import ru.task.employees.EmployeesApp.EmployeeModel;
+import lombok.*;
+import ru.task.employees.adapter.EmployeesApp.EmployeeModel;
 
 @AllArgsConstructor
 @NoArgsConstructor

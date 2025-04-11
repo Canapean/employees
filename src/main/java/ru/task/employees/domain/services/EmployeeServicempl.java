@@ -1,17 +1,21 @@
-package ru.task.employees.EmployeesApp;
+package ru.task.employees.domain.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.task.employees.CatsApp.CatModel;
-import ru.task.employees.CatsApp.CatRepo;
+import ru.task.employees.adapter.CatsApp.CatModel;
+import ru.task.employees.infrastructure.repositories.CatRepo;
+import ru.task.employees.adapter.EmployeesApp.EmployeeConverter;
+import ru.task.employees.adapter.EmployeesApp.EmployeeModel;
+import ru.task.employees.infrastructure.repositories.EmployeeRepo;
+import ru.task.employees.domain.EmployeeEntity;
+import ru.task.employees.domain.interfaces.EmployeeService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class EmployeeServicempl implements EmployeeService{
+public class EmployeeServicempl implements EmployeeService {
 
     @Autowired
     private EmployeeRepo employeeRepo;
@@ -26,9 +30,9 @@ public class EmployeeServicempl implements EmployeeService{
     }
 
     @Override
-    public List<EmployeeDto> getAllEmployees(){
+    public List<EmployeeEntity> getAllEmployees(){
         List<EmployeeModel> employees = employeeRepo.findAll();
-        List<EmployeeDto> result = new ArrayList<>();
+        List<EmployeeEntity> result = new ArrayList<>();
         for (EmployeeModel model : employees){
             result.add(employeeConverter.toDto(model));
         }
@@ -36,20 +40,20 @@ public class EmployeeServicempl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDto createEmployee(EmployeeDto dto){
+    public EmployeeEntity createEmployee(EmployeeEntity dto){
         EmployeeModel model = employeeConverter.toModel(dto);
         EmployeeModel savedModel = employeeRepo.save(model);
         return employeeConverter.toDto(savedModel);
     }
 
     @Override
-    public EmployeeDto getEmployeeById(Long id){
+    public EmployeeEntity getEmployeeById(Long id){
         EmployeeModel model = employeeRepo.getById(id);
         return employeeConverter.toDto(model);
     }
 
     @Override
-    public EmployeeDto updateEmployeeById(Long id, EmployeeDto data){
+    public EmployeeEntity updateEmployeeById(Long id, EmployeeEntity data){
         EmployeeModel employee = employeeRepo.getById(id);
 
         employee.setFirstName(data.getFirst_name());
