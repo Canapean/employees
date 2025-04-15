@@ -9,5 +9,7 @@
 2. **Запуск**:
     ```bash
    mvn package -DskipTests
+    ```
+    ```bash
    docker compose up --build
     
